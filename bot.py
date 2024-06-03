@@ -40,7 +40,7 @@ if __name__ == "__main__":
     try:
         while True:
              print("I'm alive")
-            time.sleep(1)
+         
     except KeyboardInterrupt:
         print("Main script is stopping...")
 
