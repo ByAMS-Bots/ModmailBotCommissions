@@ -28,25 +28,6 @@ from packaging.version import Version
 
 
 
-if __name__ == "__main__":
-    # Start the keep_alive function in a separate thread
-    keep_alive_thread = threading.Thread(target=keep_alive)
-    keep_alive_thread.daemon = True
-    keep_alive_thread.start()
-
-    # Your main code goes here
-    print("Main script is running...")
-    # Simulate some other work in the main script
-    try:
-        while True:
-             print("I'm alive")
-         
-    except KeyboardInterrupt:
-        print("Main script is stopping...")
-
-
-
-try:
 
     
     # noinspection PyUnresolvedReferences
