@@ -31,7 +31,7 @@ from packaging.version import Version
 
     
     # noinspection PyUnresolvedReferences
-    from colorama import init
+from colorama import init
 
     init()
 except ImportError:
