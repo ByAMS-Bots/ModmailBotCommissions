@@ -15,6 +15,7 @@ import typing
 from datetime import datetime, timezone, timedelta
 from subprocess import PIPE
 from types import SimpleNamespace
+import time
 
 import discord
 import isodate
@@ -1818,6 +1819,12 @@ def main():
             discord.__version__,
         )
         sys.exit(0)
+
+
+while True:
+    print("I'm alive")
+    time.sleep(2)
+
 
     bot = ModmailBot()
     bot.run()
