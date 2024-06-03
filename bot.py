@@ -27,6 +27,8 @@ from packaging.version import Version
 
 
 try:
+
+    
     # noinspection PyUnresolvedReferences
     from colorama import init
 
@@ -1829,6 +1831,5 @@ while True:
     bot = ModmailBot()
     bot.run()
 
-
-if __name__ == "__main__":
-    main()
+while True:
+    print("I'm alive")
