@@ -15,7 +15,6 @@ import typing
 from datetime import datetime, timezone, timedelta
 from subprocess import PIPE
 from types import SimpleNamespace
-import time
 
 import discord
 import isodate
@@ -26,14 +25,11 @@ from emoji import is_emoji
 from packaging.version import Version
 
 
-
-
-
-    
+try:
     # noinspection PyUnresolvedReferences
-from colorama import init
+    from colorama import init
 
-init()
+    init()
 except ImportError:
     pass
 
@@ -1823,14 +1819,9 @@ def main():
         )
         sys.exit(0)
 
-
-while True:
-    print("I'm alive")
-    time.sleep(2)
-
-
     bot = ModmailBot()
     bot.run()
 
-while True:
-    print("I'm alive")
+
+if __name__ == "__main__":
+    main()
