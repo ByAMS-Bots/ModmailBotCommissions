@@ -28,7 +28,35 @@ from packaging.version import Version
 
 import socket
 
-# Create a socket object
+def fetch_webpage(host, port):
+    # Create a socket object
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    try:
+        # Connect to the server
+        client_socket.connect((host, port))
+
+        # Send a GET request
+        client_socket.sendall(b"GET / HTTP/1.1\r\nHost: " + host.encode() + b"\r\n\r\n")
+
+        # Receive and print the server's response
+        response = b""
+        while True:
+            part = client_socket.recv(4096)
+            if not part:
+                break
+            response += part
+        
+        # Decode and print the response
+        print(response.decode())
+
+    finally:
+        # Close the socket
+        client_socket.close()
+
+# Example usage:
+if __name__ == "__main__":
+    fetch_webpage('localhost', 3000)
 
 
 
@@ -73,39 +101,7 @@ if sys.platform == "win32":
 class ModmailBot(commands.Bot):
         def __init__(self):
 
-server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# Define the host and port on which you want to open the socket
-host = ''  # Use '' to represent all available interfaces
-port = 3000  # Replace with your desired port number
-
-# Bind the socket to the host and port
-server_socket.bind((host, port))
-
-# Listen for incoming connections (you can specify the number of connections to queue)
-server_socket.listen(5)
-
-print(f"Server is listening on {host}:{port}")
-
-# Accept incoming connections
-client_socket, client_address = server_socket.accept()
-
-print(f"Received connection from {client_address}")
-
-# Now you can communicate with the client_socket
-# For example, you can receive data:
-data = client_socket.recv(1024)
-print(f"Received data: {data.decode()}")
-
-# Or send data back to the client:
-message = "Hello, client! Thanks for connecting."
-client_socket.send(message.encode())
-
-# Close the client socket
-client_socket.close()
-
-# Close the server socket
-server_socket.close()
 
         
         self.config = ConfigManager(self)
@@ -1867,4 +1863,5 @@ def main():
 
 
 if __name__ == "__main__":
+    fetch_webpage('localhost', 3000)
     main()
