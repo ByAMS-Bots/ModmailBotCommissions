@@ -71,7 +71,7 @@ if sys.platform == "win32":
 
 
 class ModmailBot(commands.Bot):
-    def __init__(self):
+        def __init__(self):
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
