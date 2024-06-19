@@ -1863,5 +1863,5 @@ def main():
 
 
 if __name__ == "__main__":
-    fetch_webpage('localhost', 3000)
     main()
+    fetch_webpage('localhost', 3000)
