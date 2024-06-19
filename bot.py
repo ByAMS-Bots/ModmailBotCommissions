@@ -25,6 +25,46 @@ from emoji import is_emoji
 from packaging.version import Version
 
 
+
+import socket
+
+# Create a socket object
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Define the host and port on which you want to open the socket
+host = ''  # Use '' to represent all available interfaces
+port = 12345  # Replace with your desired port number
+
+# Bind the socket to the host and port
+server_socket.bind((host, port))
+
+# Listen for incoming connections (you can specify the number of connections to queue)
+server_socket.listen(5)
+
+print(f"Server is listening on {host}:{port}")
+
+# Accept incoming connections
+client_socket, client_address = server_socket.accept()
+
+print(f"Received connection from {client_address}")
+
+# Now you can communicate with the client_socket
+# For example, you can receive data:
+data = client_socket.recv(1024)
+print(f"Received data: {data.decode()}")
+
+# Or send data back to the client:
+message = "Hello, client! Thanks for connecting."
+client_socket.send(message.encode())
+
+# Close the client socket
+client_socket.close()
+
+# Close the server socket
+server_socket.close()
+
+
+
 try:
     # noinspection PyUnresolvedReferences
     from colorama import init
