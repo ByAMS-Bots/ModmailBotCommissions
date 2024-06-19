@@ -33,7 +33,7 @@ server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Define the host and port on which you want to open the socket
 host = ''  # Use '' to represent all available interfaces
-port = 12345  # Replace with your desired port number
+port = 3000  # Replace with your desired port number
 
 # Bind the socket to the host and port
 server_socket.bind((host, port))
